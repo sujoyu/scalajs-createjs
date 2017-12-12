@@ -3,13 +3,8 @@ package com.scalawarrior.scalajs.createjs
 import scala.scalajs.js
 import js.annotation._
 
-//@JSName("createjs.EventDispatcher")
-//object EventDispatcher extends js.Object {
-//  def initialize(target: Object): Unit = js.native
-//}
-
 @js.native
-@JSName("createjs.Event")
+@JSGlobal("createjs.Event")
 class Event protected () extends js.Object {
   def this(`type`: String, bubbles: Boolean, cancelable: Boolean) = this()
   var bubbles: Boolean = js.native
@@ -46,27 +41,43 @@ class Event protected () extends js.Object {
   def set(props: Object): Event = js.native
   def stopImmediatePropagation(): Unit = js.native
   def stopPropagation(): Unit = js.native
-  override def toString(): String = js.native
+  //override def toString(): String = js.native
 }
 
 @js.native
-@JSName("createjs.EventDispatcher")
+@JSGlobal("createjs.EventDispatcher")
 class EventDispatcher extends js.Object {
- def addEventListener(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): js.Function = js.native
- //def addEventListener(`type`: String, listener: js.Any, useCapture: Boolean = ???): Object = js.native
- def dispatchEvent(eventObj: Object, target: Object = ???): Boolean = js.native
- def hasEventListener(`type`: String): Boolean = js.native
- def off(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): Unit = js.native
- def on(`type`: String, listener: js.Function1[Object, Boolean], scope: Object = ???, once: Boolean = ???, data: js.Any = ???, useCapture: Boolean = ???): js.Function = js.native
- //def on(`type`: String, listener: js.Any, scope: Object = ???, once: Boolean = ???, data: js.Any = ???, useCapture: Boolean = ???): Object = js.native
- def removeAllEventListeners(`type`: String = ???): Unit = js.native
- def removeEventListener(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): Unit = js.native
- override def toString(): String = js.native
- def willTrigger(`type`: String): Boolean = js.native
+  def addEventListener(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): js.Function = js.native
+  def addEventListener(`type`: String, listener: js.Any, useCapture: Boolean = ???): Object = js.native
+  def dispatchEvent(eventObj: Object, target: Object = ???): Boolean = js.native
+  def dispatchEvent(eventObj: String, target: Object = ???): Boolean = js.native
+  def dispatchEvent(eventObj: Event, target: Object = ???): Boolean = js.native
+  def hasEventListener(`type`: String): Boolean = js.native
+  def off(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): Unit = js.native
+  def off(`type`: String, listener: js.Any, useCapture: Boolean = ???): Unit = js.native
+  def off(`type`: String, listener: js.Function, useCapture: Boolean = ???): Unit = js.native
+  def on(`type`: String, listener: js.Function1[Object, Boolean], scope: Object = ???, once: Boolean = ???, data: js.Any = ???, useCapture: Boolean = ???): js.Function = js.native
+  def on(`type`: String, listener: js.Any, scope: Object = ???, once: Boolean = ???, data: js.Any = ???, useCapture: Boolean = ???): Object = js.native
+  def removeAllEventListeners(`type`: String = ???): Unit = js.native
+  def removeEventListener(`type`: String, listener: js.Function1[Object, Boolean], useCapture: Boolean = ???): Unit = js.native
+  def removeEventListener(`type`: String, listener: js.Any, useCapture: Boolean = ???): Unit = js.native
+  def removeEventListener(`type`: String, listener: js.Function, useCapture: Boolean = ???): Unit = js.native
+  //override def toString(): String = js.native
+  def willTrigger(`type`: String): Boolean = js.native
 }
 
-// //@JSName("createjs")
-// @JSName("createjs.EventDispatcher")
-// class EventDispatcher extends js.Object {
-//   def initialize(target: Object): Unit = js.native
-// }
+@js.native
+@JSGlobal("createjs.EventDispatcher")
+object EventDispatcher extends js.Object {
+  def initialize(target: Object): Unit = js.native
+}
+
+@js.native
+@JSGlobal("createjs")
+object createjs extends js.Object {
+  def extend(subclass: js.Function0[Any], superclass: js.Function0[Any]): js.Function0[Any] = js.native
+  def indexOf(array: js.Array[js.Any], searchElement: Object): Double = js.native
+  def promote(subclass: js.Function0[Any], prefix: String): js.Function0[Any] = js.native
+  def proxy(method: js.Function1[Object, Boolean], scope: Object, arg: js.Any*): js.Function1[Object, Any] = js.native
+  def proxy(method: js.Any, scope: Object, arg: js.Any*): js.Function1[Object, Any] = js.native
+}
